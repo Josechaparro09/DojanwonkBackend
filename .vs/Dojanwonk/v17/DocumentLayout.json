@@ -1,0 +1,348 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{183BFCF2-F057-467E-85E1-F8148B4C17C0}|BLL\\BLL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\bll\\serviceprestamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{183BFCF2-F057-467E-85E1-F8148B4C17C0}|BLL\\BLL.csproj|solutionrelative:bll\\serviceprestamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183BFCF2-F057-467E-85E1-F8148B4C17C0}|BLL\\BLL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\bll\\serviceusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{183BFCF2-F057-467E-85E1-F8148B4C17C0}|BLL\\BLL.csproj|solutionrelative:bll\\serviceusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\modelos\\detalleprestamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\modelos\\detalleprestamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\modelos\\prestamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\modelos\\prestamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183BFCF2-F057-467E-85E1-F8148B4C17C0}|BLL\\BLL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\bll\\servicearticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{183BFCF2-F057-467E-85E1-F8148B4C17C0}|BLL\\BLL.csproj|solutionrelative:bll\\servicearticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9194906-2B75-4C0B-990C-45424D84F5F6}|Dojanwonk\\Dojanwonk.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dojanwonk\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9194906-2B75-4C0B-990C-45424D84F5F6}|Dojanwonk\\Dojanwonk.csproj|solutionrelative:dojanwonk\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9194906-2B75-4C0B-990C-45424D84F5F6}|Dojanwonk\\Dojanwonk.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dojanwonk\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9194906-2B75-4C0B-990C-45424D84F5F6}|Dojanwonk\\Dojanwonk.csproj|solutionrelative:dojanwonk\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\dbarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\dbarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\dbprestamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\dbprestamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\dbusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\dbusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\modelos\\dbdojankwoncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\modelos\\dbdojankwoncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\dbgrupo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\dbgrupo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\dbrango.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\dbrango.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\dbpago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\dbpago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\dbexamen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\dbexamen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9194906-2B75-4C0B-990C-45424D84F5F6}|Dojanwonk\\Dojanwonk.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dojanwonk\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E9194906-2B75-4C0B-990C-45424D84F5F6}|Dojanwonk\\Dojanwonk.csproj|solutionrelative:dojanwonk\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9194906-2B75-4C0B-990C-45424D84F5F6}|Dojanwonk\\Dojanwonk.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dojanwonk\\dojanwonk.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{E9194906-2B75-4C0B-990C-45424D84F5F6}|Dojanwonk\\Dojanwonk.csproj|solutionrelative:dojanwonk\\dojanwonk.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\modelos\\examen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\modelos\\examen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\modelos\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\modelos\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|c:\\users\\home\\onedrive\\escritorio\\parcialp3\\ui\\dal\\modelos\\estudiante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CFD6A5-4AE9-4FBD-A166-B0F718E24541}|DAL\\DAL.csproj|solutionrelative:dal\\modelos\\estudiante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Prestamo.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\Prestamo.cs",
+              "RelativeDocumentMoniker": "DAL\\Modelos\\Prestamo.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\Prestamo.cs",
+              "RelativeToolTip": "DAL\\Modelos\\Prestamo.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAA5wBEAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T20:20:36.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\Dojanwonk\\Program.cs",
+              "RelativeDocumentMoniker": "Dojanwonk\\Program.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\Dojanwonk\\Program.cs",
+              "RelativeToolTip": "Dojanwonk\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T14:00:43.855Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ServicePrestamo.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\BLL\\ServicePrestamo.cs",
+              "RelativeDocumentMoniker": "BLL\\ServicePrestamo.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\BLL\\ServicePrestamo.cs",
+              "RelativeToolTip": "BLL\\ServicePrestamo.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAIwDYAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T20:14:42.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ServiceArticulo.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\BLL\\ServiceArticulo.cs",
+              "RelativeDocumentMoniker": "BLL\\ServiceArticulo.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\BLL\\ServiceArticulo.cs",
+              "RelativeToolTip": "BLL\\ServiceArticulo.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAUwCkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T19:57:41.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DetallePrestamo.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\DetallePrestamo.cs",
+              "RelativeDocumentMoniker": "DAL\\Modelos\\DetallePrestamo.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\DetallePrestamo.cs",
+              "RelativeToolTip": "DAL\\Modelos\\DetallePrestamo.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAYAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T20:20:52.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ServiceUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\BLL\\ServiceUsuario.cs",
+              "RelativeDocumentMoniker": "BLL\\ServiceUsuario.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\BLL\\ServiceUsuario.cs",
+              "RelativeToolTip": "BLL\\ServiceUsuario.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAswCgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:49:09.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DBArticulo.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBArticulo.cs",
+              "RelativeDocumentMoniker": "DAL\\DBArticulo.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBArticulo.cs",
+              "RelativeToolTip": "DAL\\DBArticulo.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwBIAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:42:50.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\Dojanwonk\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Dojanwonk\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\Dojanwonk\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Dojanwonk\\Controllers\\UsuarioController.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAowBkAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T14:20:57.269Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DbDojankwonContext.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\DbDojankwonContext.cs",
+              "RelativeDocumentMoniker": "DAL\\Modelos\\DbDojankwonContext.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\DbDojankwonContext.cs",
+              "RelativeToolTip": "DAL\\Modelos\\DbDojankwonContext.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAYwCUAAACLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:44:00.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DBPrestamo.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBPrestamo.cs",
+              "RelativeDocumentMoniker": "DAL\\DBPrestamo.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBPrestamo.cs",
+              "RelativeToolTip": "DAL\\DBPrestamo.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAswCoAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:40:45.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DBGrupo.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBGrupo.cs",
+              "RelativeDocumentMoniker": "DAL\\DBGrupo.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBGrupo.cs",
+              "RelativeToolTip": "DAL\\DBGrupo.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwBQAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:37:36.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DBUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBUsuario.cs",
+              "RelativeDocumentMoniker": "DAL\\DBUsuario.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBUsuario.cs",
+              "RelativeToolTip": "DAL\\DBUsuario.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:50:05.547Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DBRango.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBRango.cs",
+              "RelativeDocumentMoniker": "DAL\\DBRango.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBRango.cs",
+              "RelativeToolTip": "DAL\\DBRango.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwBcAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:37:47.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DBPago.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBPago.cs",
+              "RelativeDocumentMoniker": "DAL\\DBPago.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBPago.cs",
+              "RelativeToolTip": "DAL\\DBPago.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAA5wBEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:47:17.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DBExamen.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBExamen.cs",
+              "RelativeDocumentMoniker": "DAL\\DBExamen.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\DBExamen.cs",
+              "RelativeToolTip": "DAL\\DBExamen.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:39:18.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\Dojanwonk\\appsettings.json",
+              "RelativeDocumentMoniker": "Dojanwonk\\appsettings.json",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\Dojanwonk\\appsettings.json",
+              "RelativeToolTip": "Dojanwonk\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-14T14:01:36.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Dojanwonk.http",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\Dojanwonk\\Dojanwonk.http",
+              "RelativeDocumentMoniker": "Dojanwonk\\Dojanwonk.http",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\Dojanwonk\\Dojanwonk.http",
+              "RelativeToolTip": "Dojanwonk\\Dojanwonk.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-05-14T14:01:34.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Articulo.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\Articulo.cs",
+              "RelativeDocumentMoniker": "DAL\\Modelos\\Articulo.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\Articulo.cs",
+              "RelativeToolTip": "DAL\\Modelos\\Articulo.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:46:20.569Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Estudiante.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\Estudiante.cs",
+              "RelativeDocumentMoniker": "DAL\\Modelos\\Estudiante.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\Estudiante.cs",
+              "RelativeToolTip": "DAL\\Modelos\\Estudiante.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAwB0AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:45:53.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Examen.cs",
+              "DocumentMoniker": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\Examen.cs",
+              "RelativeDocumentMoniker": "DAL\\Modelos\\Examen.cs",
+              "ToolTip": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DAL\\Modelos\\Examen.cs",
+              "RelativeToolTip": "DAL\\Modelos\\Examen.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T13:42:35.689Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
