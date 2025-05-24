@@ -16,9 +16,9 @@ namespace DAL
         {
             this.dbDojankwonContext = dbDojankwonContext;
         }
-        public async Task Agregar(Pago prestamo)
+        public async Task Agregar(Pago pago)
         {
-            dbDojankwonContext.Pagos.Add(prestamo);
+            dbDojankwonContext.Pagos.Add(pago);
             await dbDojankwonContext.SaveChangesAsync();
         }
         public async Task<List<Pago>> Leer()

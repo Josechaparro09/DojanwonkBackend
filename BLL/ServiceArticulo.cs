@@ -21,7 +21,7 @@ namespace BLL
                 await dBArticulo.Agregar(agregar);
                 return true;
             }
-            return false;
+            throw new ArgumentException("Articulo existente");
         }
         public async Task<List<Articulo>> Leer()
         {

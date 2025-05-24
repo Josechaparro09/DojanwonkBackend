@@ -21,7 +21,7 @@ namespace BLL
                 await dBUsuario.Agregar(agregar);
                 return true;
             }
-            return false;
+            throw new ArgumentException("Error usuario existente");
         }
         public async Task<List<Usuario>> Leer()
         {

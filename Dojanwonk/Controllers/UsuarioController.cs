@@ -23,11 +23,18 @@ namespace Dojanwonk.Controllers
         [HttpPost]
         public async Task<ActionResult<Usuario>> Agregar(Usuario usuario)
         {
-            if (await logica.Agregar(usuario))
+            try
             {
-                return StatusCode(StatusCodes.Status201Created, usuario);
+                if (await logica.Agregar(usuario))
+                {
+                    return StatusCode(StatusCodes.Status201Created, usuario);
+                }
+                return BadRequest("No se pudo agregar el usuario");
             }
-            return BadRequest();
+            catch(Exception ex) { 
+                return BadRequest(ex.Message);
+            }
+            
         }
         [HttpGet("{cc}")]
         public async Task<ActionResult<Usuario>> Buscar(string cc)
@@ -38,6 +45,30 @@ namespace Dojanwonk.Controllers
                 return NotFound();
             }
             return Ok(buscado);
+        }
+        [HttpDelete("{cc}")]
+        public async Task<ActionResult> Eliminar(string cc)
+        {
+            try
+            {
+                await logica.Eliminar(cc);
+                return Ok("Usuario eliminado con exito");
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPut]
+        public async Task<ActionResult> Actualizar(Usuario usuario)
+        {
+            try
+            {
+                await logica.Actualizar(usuario);
+                return Ok("Usuario Actualizado con exito");
+            }catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

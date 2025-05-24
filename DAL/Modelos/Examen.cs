@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace DAL.Modelos;
 
@@ -24,8 +25,8 @@ public partial class Examen
     public int Teorica { get; set; }
 
     public int NotaFinal { get; set; }
-
+    [JsonIgnore]
     public DateOnly? FechaRegistro { get; set; }
-
-    public virtual Estudiante Estudiante { get; set; } = null!;
+    [JsonIgnore]
+    public virtual Estudiante? Estudiante { get; set; } = null!;
 }

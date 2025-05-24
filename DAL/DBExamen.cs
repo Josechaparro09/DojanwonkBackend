@@ -36,10 +36,8 @@ namespace DAL
         {
             return await dbDojankwonContext.Examenes.FindAsync(cc);
         }
-        public async Task<bool> Eliminar(string cc)
+        public async Task<bool> Eliminar(Examen eliminar)
         {
-            Examen eliminar = await Buscar(cc);
-            if (eliminar == null) return false;
             dbDojankwonContext.Examenes.Remove(eliminar);
             await dbDojankwonContext.SaveChangesAsync();
             return true;

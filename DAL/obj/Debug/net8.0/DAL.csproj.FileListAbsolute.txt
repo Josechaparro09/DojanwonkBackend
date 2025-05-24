@@ -12,3 +12,4 @@ C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\DAL\obj\Debug\net8.0\ref\DAL.dll
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\DAL\bin\Debug\net8.0\DAL.runtimeconfig.json
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\DAL\obj\Debug\net8.0\DAL.csproj.AssemblyReference.cache
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\DAL\obj\Debug\net8.0\DAL.genruntimeconfig.cache
+C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\DAL\obj\Debug\net8.0\DAL.sourcelink.json

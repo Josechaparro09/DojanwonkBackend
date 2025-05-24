@@ -1,0 +1,104 @@
+﻿using DAL;
+using DAL.Modelos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BLL
+{
+    public class ServiceExamen
+    {
+        private readonly DBExamen dBExamen;
+        private readonly ServiceEstudiante serviceEstudiante;
+        private readonly DBRango dBRango;
+        public ServiceExamen(DBExamen dBExamen,ServiceEstudiante serviceEstudiante, DBRango dBRango)
+        {
+            this.dBExamen = dBExamen;
+            this.serviceEstudiante = serviceEstudiante;
+            this.dBRango = dBRango;
+        }
+        public async Task<bool> Registrar(Examen examen)
+        {
+            if (await TieneExamenVigente(examen.EstudianteId))
+                throw new ArgumentException("El estudiante ya tiene un examen registrado");
+
+            var ultimoExamen = await ObtenerUltimoExamenPorEstudiante(examen.EstudianteId);
+
+            if (ultimoExamen == null || !ultimoExamen.FechaRegistro.HasValue)
+            {
+                await dBExamen.Agregar(examen);
+                if (examen.NotaFinal >= 70)
+                {
+                    Rango rango = await dBRango.Buscar(examen.Estudiante.IdRango + 1);
+                    examen.Estudiante.IdRangoNavigation = rango;
+                    await serviceEstudiante.Actualizar(examen.Estudiante);
+                }
+                return true;
+            }
+
+            if (HanPasadoCincoMeses(ultimoExamen.FechaRegistro.Value.ToDateTime(TimeOnly.MinValue )))
+            {
+                await dBExamen.Agregar(examen);
+                if (examen.NotaFinal >= 70 )
+                {
+                    Rango rango = await dBRango.Buscar(examen.Estudiante.IdRango + 1);
+                    examen.Estudiante.IdRangoNavigation = rango;
+                    await serviceEstudiante.Actualizar(examen.Estudiante);
+                }
+                return true;
+            }
+
+            throw new ArgumentException("No han pasado 5 meses desde el último examen");
+        }
+
+        private async Task<bool> TieneExamenVigente(string estudianteId)
+        {
+            List<Examen> examenes = await Leer(); // Este método es como LeerFiltradosPorUltimoMes
+            return examenes.Any(e => e.EstudianteId == estudianteId);
+        }
+
+        private async Task<Examen?> ObtenerUltimoExamenPorEstudiante(string estudianteId)
+        {
+            List<Examen> examenes = await Obtener();
+            return examenes
+                .Where(e => e.EstudianteId == estudianteId && e.FechaRegistro.HasValue)
+                .OrderByDescending(e => e.FechaRegistro)
+                .FirstOrDefault();
+        }
+
+        private bool HanPasadoCincoMeses(DateTime fecha)
+        {
+            return fecha.Date.AddMonths(5) <= DateTime.Today;
+        }
+        public async Task<List<Examen>> Obtener()
+        {
+            return await dBExamen.Leer();
+        }
+        public async Task<List<Examen>> Leer()
+        {
+            List<Examen> examenes = await dBExamen.Leer();
+
+            DateTime fechaLimite = DateTime.Today.AddDays(-14);
+
+            return examenes
+                .Where(e => e.FechaRegistro.HasValue &&
+                            e.FechaRegistro.Value.ToDateTime(TimeOnly.MinValue) >= fechaLimite)
+                .ToList();
+        }
+
+        public async Task<bool> Actualizar(Examen actualizar)
+        {
+            await dBExamen.Actualizar(actualizar);
+            return true;
+               
+        }
+        public async Task<bool> Eliminar(string idEstudiante)
+        {
+            Examen eliminar = await ObtenerUltimoExamenPorEstudiante(idEstudiante);
+            await dBExamen.Eliminar(eliminar);
+            return true;
+        }
+    }
+}

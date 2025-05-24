@@ -1,0 +1,24 @@
+# Archivos de configuración de Visual Studio
+.vs/
+*.user
+*.suo
+*.vcxproj.user
+
+# Carpetas de compilación
+bin/
+obj/
+
+# Archivos de publicación
+*.Publish.xml
+
+# Archivos temporales
+*.tmp
+*.log
+
+# Archivos de base de datos local
+*.mdf
+*.ldf
+
+# Archivos de seguridad
+*.pfx
+*.key
