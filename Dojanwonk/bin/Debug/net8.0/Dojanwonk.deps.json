@@ -9,6 +9,7 @@
       "Dojanwonk/1.0.0": {
         "dependencies": {
           "BLL": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Proxies": "9.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.5",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.5",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.7",
@@ -50,6 +51,17 @@
           "lib/netstandard2.0/Azure.Identity.dll": {
             "assemblyVersion": "1.11.4.0",
             "fileVersion": "1.1100.424.31005"
+          }
+        }
+      },
+      "Castle.Core/5.1.1": {
+        "dependencies": {
+          "System.Diagnostics.EventLog": "7.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Castle.Core.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.1.1.0"
           }
         }
       },
@@ -1255,6 +1267,20 @@
           }
         }
       },
+      "Microsoft.EntityFrameworkCore.Proxies/9.0.5": {
+        "dependencies": {
+          "Castle.Core": "5.1.1",
+          "Microsoft.EntityFrameworkCore": "9.0.5",
+          "Microsoft.Extensions.Caching.Memory": "9.0.5",
+          "Microsoft.Extensions.Logging": "9.0.5"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Proxies.dll": {
+            "assemblyVersion": "9.0.5.0",
+            "fileVersion": "9.0.525.21604"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/9.0.5": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "9.0.5",
@@ -2100,15 +2126,22 @@
           "DAL": "1.0.0"
         },
         "runtime": {
-          "BLL.dll": {}
+          "BLL.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "DAL/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore.Proxies": "9.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.5"
         },
         "runtime": {
-          "DAL.dll": {}
+          "DAL.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -2132,6 +2165,13 @@
       "sha512": "sha512-Sf4BoE6Q3jTgFkgBkx7qztYOFELBCo+wQgpYDwal/qJ1unBH73ywPztIJKXBXORRzAeNijsuxhk94h0TIMvfYg==",
       "path": "azure.identity/1.11.4",
       "hashPath": "azure.identity.1.11.4.nupkg.sha512"
+    },
+    "Castle.Core/5.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
+      "path": "castle.core/5.1.1",
+      "hashPath": "castle.core.5.1.1.nupkg.sha512"
     },
     "Humanizer/2.14.1": {
       "type": "package",
@@ -2664,6 +2704,13 @@
       "sha512": "sha512-xOVWCGRF8DpOIoZ196/g7bdghc2e7Fp6R2vZPKndWv8A64bSDSaS7F2CUoqZpmSphUeT+1HDRpNYFRBQd8H71g==",
       "path": "microsoft.entityframeworkcore.design/9.0.5",
       "hashPath": "microsoft.entityframeworkcore.design.9.0.5.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Proxies/9.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Jg+bdXOGQAkww2TY4GCyiUY1PGkmiJo92nWLojVAkDC/AiWZmu8s0HIahef8b1E83RhV7aLXjUaQPxt09hnFUQ==",
+      "path": "microsoft.entityframeworkcore.proxies/9.0.5",
+      "hashPath": "microsoft.entityframeworkcore.proxies.9.0.5.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/9.0.5": {
       "type": "package",

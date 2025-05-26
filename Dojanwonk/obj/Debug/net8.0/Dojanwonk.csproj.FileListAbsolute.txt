@@ -149,11 +149,6 @@ C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\Dojanw
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\Dojanwonk.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\staticwebassets\msbuild.Dojanwonk.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\staticwebassets\msbuild.build.Dojanwonk.props
-C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Dojanwonk.props
-C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Dojanwonk.props
-C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\scopedcss\bundle\Dojanwonk.styles.css
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\Dojanwonk.csproj.Up2Date
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\Dojanwonk.dll
@@ -289,3 +284,9 @@ C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\bin\Debug\net8.0\runtim
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\Dojanwonk.RazorAssemblyInfo.cache
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\Dojanwonk.RazorAssemblyInfo.cs
 C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\Dojanwonk.sourcelink.json
+C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\bin\Debug\net8.0\Dojanwonk.staticwebassets.endpoints.json
+C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\bin\Debug\net8.0\Castle.Core.dll
+C:\Users\HOME\OneDrive\Escritorio\ParcialP3\UI\Dojanwonk\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Proxies.dll

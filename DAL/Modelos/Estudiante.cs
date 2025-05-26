@@ -21,18 +21,16 @@ public partial class Estudiante
     public string Eps { get; set; } = null!;
 
     public int IdRango { get; set; }
-    [JsonIgnore]
     public int? IdGrupo { get; set; }
     public int? edad { get; set; }
     public DateOnly FechaNacimiento { get; set; }
     [JsonIgnore]
     public DateOnly? FechaRegistro { get; set; }
+    [JsonIgnore]
     public string? estado { get; set; }
     [JsonIgnore]
     public virtual ICollection<Examen> Examenes { get; set; } = new List<Examen>();
-    [JsonIgnore]
     public virtual Grupo? IdGrupoNavigation { get; set; }
-    [JsonIgnore]
     public virtual Rango? IdRangoNavigation { get; set; } = null!;
     [JsonIgnore]
     public virtual ICollection<Pago> Pagos { get; set; } = new List<Pago>();

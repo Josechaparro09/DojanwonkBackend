@@ -59,12 +59,12 @@ namespace Dojanwonk.Controllers
             }
         }
         [HttpPut]
-        public async Task<ActionResult> Actualizar(Usuario usuario)
+        public async Task<ActionResult<Usuario>> Actualizar(Usuario usuario)
         {
             try
             {
-                await logica.Actualizar(usuario);
-                return Ok("Usuario Actualizado con exito");
+                var actualizado = await logica.Actualizar(usuario);
+                return Ok(actualizado);
             }catch(Exception e)
             {
                 return BadRequest(e.Message);

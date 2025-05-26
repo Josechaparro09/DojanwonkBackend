@@ -39,12 +39,12 @@ namespace Dojanwonk.Controllers
             }
         }
         [HttpPut]
-        public async Task<ActionResult> Actualizar(Estudiante estudiante)
+        public async Task<ActionResult<Estudiante>> Actualizar(Estudiante estudiante)
         {
             try
             {
-                await serviceEstudiante.Actualizar(estudiante);
-                return Ok("Actualizado con éxito");
+                var actualizado =await serviceEstudiante.Actualizar(estudiante);
+                return Ok(actualizado);
             }catch(Exception ex)
             {
                 return BadRequest(ex.Message);

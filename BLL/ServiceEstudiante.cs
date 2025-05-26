@@ -25,16 +25,16 @@ namespace BLL
                 agregar.CalcularEdad();
                 if (agregar.edad >= 6 && agregar.edad <= 10)
                 {
-                    agregar.IdGrupoNavigation = await dBGrupo.Buscar(1);
+                    agregar.IdGrupo = 1;
                 }
                 if (agregar.edad>10 && agregar.edad <= 15)
                 {
-                    agregar.IdGrupoNavigation = await dBGrupo.Buscar(2);
+                    agregar.IdGrupo = 2;
 
                 }
                 if (agregar.edad >= 16)
                 {
-                    agregar.IdGrupoNavigation = await dBGrupo.Buscar(3);
+                    agregar.IdGrupo= 3;
 
                 }
                 await dBEstudiante.Agregar(agregar);
@@ -50,9 +50,12 @@ namespace BLL
         {
             return await dBEstudiante.Buscar(id);
         }
-        public async Task<bool> Actualizar(Estudiante actualizado)
+        public async Task<Estudiante> Actualizar(Estudiante actualizado)
         {
-            return await dBEstudiante.Actualizar(actualizado);
+            await dBEstudiante.Actualizar(actualizado);
+            List<Estudiante> estudiantes = await dBEstudiante.Leer();
+            var estudianteActualizado = estudiantes.FirstOrDefault(e => e.Id == actualizado.Id);
+            return estudianteActualizado;
         }
         public async Task<bool> Eliminar(string id)
         {

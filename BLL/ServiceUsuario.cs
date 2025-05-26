@@ -1,4 +1,5 @@
 ﻿using DAL.Modelos;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace BLL
         }
         public async Task<bool> Agregar(Usuario agregar)
         {
-            if( await dBUsuario.Buscar(agregar.Cc) != null)
+            if( await dBUsuario.Buscar(agregar.Cc) == null)
             {
                 await dBUsuario.Agregar(agregar);
                 return true;
@@ -31,9 +32,14 @@ namespace BLL
         {
             return await dBUsuario.Buscar(cc);
         }
-        public async Task<bool> Actualizar(Usuario actualizado)
+        public async Task<Usuario> Actualizar(Usuario usuario)
         {
-            return await dBUsuario.Actualizar(actualizado);
+            await dBUsuario.Actualizar(usuario);
+
+            // Opcional: recargar desde la BD si quieres el estado final con relaciones, valores calculados, etc.
+            List<Usuario> lista = await Leer();
+            var actualizado = lista.FirstOrDefault(u => u.Cc == usuario.Cc);
+            return actualizado;
         }
         public async Task<bool> Eliminar(string cc)
         {

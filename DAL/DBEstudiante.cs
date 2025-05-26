@@ -31,7 +31,10 @@ namespace DAL
         }
         public async Task<List<Estudiante>> Leer()
         {
-            return await dbDojankwonContext.Estudiantes.ToListAsync();
+            return await dbDojankwonContext.Estudiantes
+                .Include(e => e.IdGrupoNavigation)
+                .Include(e => e.IdRangoNavigation)
+                .ToListAsync();
         }
         public async Task<bool> Actualizar(Estudiante actualizado)
         {
@@ -42,7 +45,10 @@ namespace DAL
         }
         public async Task<Estudiante> Buscar(string id)
         {
-            return await dbDojankwonContext.Estudiantes.FindAsync(id);
+            return await dbDojankwonContext.Estudiantes
+                .Include(e => e.IdGrupoNavigation)
+                .Include(e => e.IdRangoNavigation)
+                .FirstOrDefaultAsync(e => e.Id == id);
         }
         public async Task<bool> Eliminar(string id)
         {

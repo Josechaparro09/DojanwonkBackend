@@ -27,6 +27,7 @@ builder.Services.AddScoped<ServiceArticulo>();
 builder.Services.AddScoped<DBPrestamo>();
 builder.Services.AddScoped<ServicePrestamo>();
 builder.Services.AddScoped<DBRango>();
+builder.Services.AddScoped<ServiceRango>();
 builder.Services.AddScoped<DBGrupo>();
 builder.Services.AddScoped<DBEstudiante>();
 builder.Services.AddScoped<ServiceEstudiante>();
@@ -47,7 +48,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
+
 
 app.UseHttpsRedirection();
 
