@@ -45,7 +45,7 @@ namespace Dojanwonk.Controllers
             }
             return Ok(buscado);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult> Eliminar(int id)
         {
             try

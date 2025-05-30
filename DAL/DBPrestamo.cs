@@ -23,7 +23,7 @@ namespace BLL
         }
         public async Task<List<Prestamo>> Leer()
         {
-            return await dbDojankwonContext.Prestamos.ToListAsync();
+            return await dbDojankwonContext.Prestamos.Include(p=>p.Estudiante).Include(p=>p.DetallePrestamos).ThenInclude(d=>d.IdArticuloNavigation).ToListAsync();
         }
         public async Task<bool> Actualizar(Prestamo actualizado)
         {

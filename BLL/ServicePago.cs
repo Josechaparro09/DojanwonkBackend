@@ -25,7 +25,7 @@ namespace BLL
 
             foreach (var item in estudiantes)
             {
-                if (item.estado == "pagado" && item.FechaRegistro.HasValue)
+                if (item.estado == "activo" && item.FechaRegistro.HasValue)
                 {
                     var fechaRegistro = item.FechaRegistro.Value.ToDateTime(TimeOnly.MinValue);
 
@@ -55,29 +55,53 @@ namespace BLL
                 }
             }
         }
+        public async Task AgregarPago(Pago pago)
+        {
+            await dBPago.Agregar(pago);
+        }
         public async Task GenerarPagos()
         {
             List<Estudiante> estudiantes = await serviceEstudiante.Leer();
             foreach (var item in estudiantes)
             {
                 Pago ultimo = await Buscar(item.Id);
-                if(ultimo == null)
+                if (ultimo == null)
                 {
-                    if(item.FechaRegistro.Value.AddMonths(1).ToDateTime(TimeOnly.MinValue) >= DateTime.Today)
+                    if (item.FechaRegistro.Value.AddMonths(1).ToDateTime(TimeOnly.MinValue) >= DateTime.Today)
                     {
                         //Crear un nuevo pago
                         Pago nuevoPago = new Pago();
                         nuevoPago.IdEstudiante = item.Id;
                         nuevoPago.FechaPago = item.FechaRegistro.Value.AddMonths(1);
                         nuevoPago.Estado = "Pendiente";
+                        try
+                        {
+                            await NotificacionesCorreo.EnviarCorreoAsync(item.Correo, "Pago Pendiente", $"Estimado {item.Nombres + " " + item.Apellidos}, su pago está pendiente para el día {nuevoPago.FechaPago.ToShortDateString()}.");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            throw;
+                        }
                         await dBPago.Agregar(nuevoPago);
                         ultimo.IdEstudianteNavigation.estado = "Inactivo";
                         await serviceEstudiante.Actualizar(ultimo.IdEstudianteNavigation);
                     }
+                    if (item.FechaRegistro.Value.AddDays(27).ToDateTime(TimeOnly.MinValue) < DateTime.Today)
+                    {
+                        try
+                        {
+                            await NotificacionesCorreo.EnviarCorreoAsync(item.Correo, "Fecha proximo pago", $"Estimado {item.Nombres + " " + item.Apellidos}, su pago está pendiente para el día {item.FechaRegistro.Value.AddMonths(1).ToShortDateString()}.");
+                        }
+                        catch (Exception ex)
+                        {
+                            throw;
+                        }
+                    }
                 }
                 else
                 {
-                    if(ultimo.FechaPago.AddMonths(1).ToDateTime(TimeOnly.MinValue) >= DateTime.Today)
+                    if (ultimo.FechaPago.AddMonths(1).ToDateTime(TimeOnly.MinValue) >= DateTime.Today)
                     {
                         //Crear un nuevo pago
                         if (ultimo.IdEstudianteNavigation.estado == "Activo")
@@ -86,9 +110,28 @@ namespace BLL
                             nuevoPago.IdEstudiante = item.Id;
                             nuevoPago.FechaPago = ultimo.FechaPago.AddMonths(1);
                             nuevoPago.Estado = "Pendiente";
+                            try
+                            {
+                                await NotificacionesCorreo.EnviarCorreoAsync(item.Correo, "Pago Pendiente", $"Estimado {ultimo.IdEstudianteNavigation.Nombres + " " + ultimo.IdEstudianteNavigation.Apellidos}, su pago está pendiente para el día {nuevoPago.FechaPago.ToShortDateString()}.");
+                            }
+                            catch (Exception ex)
+                            {
+                                throw;
+                            }
                             await dBPago.Agregar(nuevoPago);
                             ultimo.IdEstudianteNavigation.estado = "Inactivo";
                             await serviceEstudiante.Actualizar(ultimo.IdEstudianteNavigation);
+                        }
+                    }
+                    if (ultimo.FechaPago.AddDays(27).ToDateTime(TimeOnly.MinValue) < DateTime.Today)
+                    {
+                        try
+                        {
+                            await NotificacionesCorreo.EnviarCorreoAsync(ultimo.IdEstudianteNavigation.Correo, "Fecha proximo pago", $"Estimado {item.Nombres + " " + item.Apellidos}, su pago está pendiente para el día {item.FechaRegistro.Value.AddMonths(1).ToShortDateString()}.");
+                        }
+                        catch (Exception ex)
+                        {
+                            throw;
                         }
                     }
                 }

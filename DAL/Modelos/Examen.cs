@@ -24,9 +24,12 @@ public partial class Examen
 
     public int Teorica { get; set; }
 
-    public int NotaFinal { get; set; }
+    public int? NotaFinal { get; set; }
     [JsonIgnore]
     public DateOnly? FechaRegistro { get; set; }
-    [JsonIgnore]
     public virtual Estudiante? Estudiante { get; set; } = null!;
+    public void CalcularNotaFinal()
+    {
+        NotaFinal = Calentamiento + TecMano + TecPatada + TecEspecial + Combate + Rompimiento + Teorica;
+    }
 }

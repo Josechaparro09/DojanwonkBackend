@@ -63,8 +63,7 @@ namespace Dojanwonk.Controllers
         {
             try
             {
-                await servicePrestamo.Actualizar(prestamo
-                    );
+                await servicePrestamo.Actualizar(prestamo);
                 return Ok("Prestamo eliminado con exito");
             }
             catch (Exception e)

@@ -23,7 +23,7 @@ namespace DAL
         }
         public async Task<List<Examen>> Leer()
         {
-            return await dbDojankwonContext.Examenes.ToListAsync();
+            return await dbDojankwonContext.Examenes.Include(e=>e.Estudiante).ToListAsync();
         }
         public async Task<bool> Actualizar(Examen actualizado)
         {

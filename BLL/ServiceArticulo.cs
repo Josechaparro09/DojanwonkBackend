@@ -16,7 +16,7 @@ namespace BLL
         }
         public async Task<bool> Agregar(Articulo agregar)
         {
-            if (await dBArticulo.Buscar(agregar.Id) != null)
+            if (await dBArticulo.Buscar(agregar.Id) == null)
             {
                 await dBArticulo.Agregar(agregar);
                 return true;

@@ -50,6 +50,20 @@ namespace BLL
             var prestamosEstudiante=prestamos.Where(p => p.Estudiante.Id == IdEstudiante).ToList();
             return prestamosEstudiante.FirstOrDefault(p => p.Estado == "En prestamo");
         }
+        public async Task EnMora()
+        {
+            List<Prestamo> prestamos = await dBPrestamo.Leer();
+            DateTime fechaActual = DateTime.Now;
+            foreach (var prestamo in prestamos)
+            {
+                if (prestamo.Estado == "En prestamo" && prestamo.FechaDevolucion.ToDateTime(TimeOnly.MinValue) < fechaActual)
+                {
+                    prestamo.Estado = "En mora";
+                    await NotificacionesCorreo.EnviarCorreoAsync(prestamo.Estudiante.Correo, "Prestamo en Mora", $"El prestamo está en mora. Por favor, devuélvelo lo antes posible.");
+                    await dBPrestamo.Actualizar(prestamo);
+                }
+            }
+        }
         public async Task<bool> Devolver(int id)
         {
             Prestamo prestamo = await Buscar(id);

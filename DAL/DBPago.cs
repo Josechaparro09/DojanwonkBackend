@@ -23,7 +23,9 @@ namespace DAL
         }
         public async Task<List<Pago>> Leer()
         {
-            return await dbDojankwonContext.Pagos.ToListAsync();
+            return await dbDojankwonContext.Pagos
+                 .Include(e => e.IdEstudianteNavigation)
+                 .ToListAsync();
         }
         public async Task<bool> Actualizar(Pago actualizado)
         {

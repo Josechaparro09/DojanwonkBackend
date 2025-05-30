@@ -53,6 +53,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2025.5.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -221,6 +227,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2025.5.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

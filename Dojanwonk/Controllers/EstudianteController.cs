@@ -12,9 +12,11 @@ namespace Dojanwonk.Controllers
     public class EstudianteController : ControllerBase
     {
         private readonly ServiceEstudiante serviceEstudiante;
-        public EstudianteController(ServiceEstudiante serviceEstudiante)
+        private readonly ServicePago pago;
+        public EstudianteController(ServiceEstudiante serviceEstudiante, ServicePago pago)
         {
             this.serviceEstudiante = serviceEstudiante;
+            this.pago = pago;
         }
 
         [HttpGet]
@@ -29,6 +31,13 @@ namespace Dojanwonk.Controllers
             {
                 if (await serviceEstudiante.Agregar(estudiante))
                 {
+                    Pago pago = new Pago
+                    {
+                        IdEstudianteNavigation = estudiante,
+                        FechaPago = estudiante.FechaRegistro.Value.AddMonths(1),
+                        Estado = "pagado"
+                    };
+                    await this.pago.AgregarPago(pago);
                     return StatusCode(StatusCodes.Status201Created, estudiante);
                 }
                 return BadRequest("No se pudo agregar el estudiante.");

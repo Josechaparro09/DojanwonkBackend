@@ -3,9 +3,14 @@ using DAL.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using QuestPDF.Drawing;
+using System.Collections.Generic;
 namespace BLL
 {
     public class ServiceExamen
@@ -28,11 +33,13 @@ namespace BLL
 
             if (ultimoExamen == null || !ultimoExamen.FechaRegistro.HasValue)
             {
+                examen.CalcularNotaFinal();
                 await dBExamen.Agregar(examen);
                 if (examen.NotaFinal >= 70)
                 {
-                    Rango rango = await dBRango.Buscar(examen.Estudiante.IdRango + 1);
-                    examen.Estudiante.IdRangoNavigation = rango;
+                    Estudiante estudiante = await serviceEstudiante.Buscar(examen.EstudianteId);
+                    Rango rango = await dBRango.Buscar(estudiante.IdRango + 1);
+                    estudiante.IdRango = rango.Id;
                     await serviceEstudiante.Actualizar(examen.Estudiante);
                 }
                 return true;
@@ -40,6 +47,7 @@ namespace BLL
 
             if (HanPasadoCincoMeses(ultimoExamen.FechaRegistro.Value.ToDateTime(TimeOnly.MinValue )))
             {
+                examen.CalcularNotaFinal();
                 await dBExamen.Agregar(examen);
                 if (examen.NotaFinal >= 70 )
                 {
@@ -87,6 +95,8 @@ namespace BLL
                             e.FechaRegistro.Value.ToDateTime(TimeOnly.MinValue) >= fechaLimite)
                 .ToList();
         }
+        
+
 
         public async Task<bool> Actualizar(Examen actualizar)
         {

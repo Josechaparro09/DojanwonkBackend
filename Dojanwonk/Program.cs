@@ -31,7 +31,13 @@ builder.Services.AddScoped<ServiceRango>();
 builder.Services.AddScoped<DBGrupo>();
 builder.Services.AddScoped<DBEstudiante>();
 builder.Services.AddScoped<ServiceEstudiante>();
+builder.Services.AddScoped<DBPago>();
+builder.Services.AddScoped<ServicePago>();
+builder.Services.AddScoped<DBExamen>();
+builder.Services.AddScoped<ServiceExamen>();
 
+
+QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
