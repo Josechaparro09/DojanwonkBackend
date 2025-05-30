@@ -18,8 +18,26 @@ namespace BLL
         }
         public async Task Agregar(Prestamo prestamo)
         {
+            var ultimoPrestamo = await dbDojankwonContext.Prestamos.OrderByDescending(p => p.Id).FirstOrDefaultAsync();
+            if (ultimoPrestamo != null)
+            {
+
+                foreach (var detalle in prestamo.DetallePrestamos)
+                {
+                    detalle.IdPrestamo = ultimoPrestamo.Id+1; // Asegurarse de que el IdPrestamo esté configurado
+
+                }
+            }
+            else { 
+                foreach (var detalle in prestamo.DetallePrestamos)
+                {
+                    detalle.IdPrestamo = 1; // Si no hay prestamos, el primer IdPrestamo es 1
+                }
+            }
+
             dbDojankwonContext.Prestamos.Add(prestamo);
             await dbDojankwonContext.SaveChangesAsync();
+            
         }
         public async Task<List<Prestamo>> Leer()
         {
@@ -34,7 +52,11 @@ namespace BLL
         }
         public async Task<Prestamo> Buscar(int id)
         {
-            return await dbDojankwonContext.Prestamos.FindAsync(id);
+            return await dbDojankwonContext.Prestamos.Include(p=>p.Estudiante).Include(p=>p.DetallePrestamos).ThenInclude(d=>d.IdArticuloNavigation).FirstOrDefaultAsync(p => p.Id == id); ;
+        }
+        public async Task<Prestamo> BuscarUltimoPrestamo()
+        {
+            return await dbDojankwonContext.Prestamos.OrderByDescending(p => p.Id).FirstOrDefaultAsync();
         }
         public async Task<bool> Eliminar(int id)
         {

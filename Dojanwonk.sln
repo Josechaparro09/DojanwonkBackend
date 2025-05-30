@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dojanwonk", "Dojanwonk\Doja
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{183BFCF2-F057-467E-85E1-F8148B4C17C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOS", "DTOS\DTOS.csproj", "{5F6F5976-7B7B-413E-A799-202662F21A7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{183BFCF2-F057-467E-85E1-F8148B4C17C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{183BFCF2-F057-467E-85E1-F8148B4C17C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{183BFCF2-F057-467E-85E1-F8148B4C17C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F6F5976-7B7B-413E-A799-202662F21A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F6F5976-7B7B-413E-A799-202662F21A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F6F5976-7B7B-413E-A799-202662F21A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F6F5976-7B7B-413E-A799-202662F21A7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

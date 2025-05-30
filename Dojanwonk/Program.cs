@@ -8,7 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DbDojankwonContext>(optionts =>
     optionts.UseSqlServer(builder.Configuration.GetConnectionString("connectionDB")));
 
-// Configurar CORS para permitir cualquier origen, header y método
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -35,7 +34,7 @@ builder.Services.AddScoped<DBPago>();
 builder.Services.AddScoped<ServicePago>();
 builder.Services.AddScoped<DBExamen>();
 builder.Services.AddScoped<ServiceExamen>();
-
+builder.Services.AddScoped<NotificacionesCorreo>();
 
 QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 builder.Services.AddControllers();
@@ -46,16 +45,15 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configurar middleware CORS
 app.UseCors("AllowAll");
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
+
 
 
 app.UseHttpsRedirection();

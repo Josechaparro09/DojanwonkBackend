@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj" />
+    <ProjectReference Include="..\DTOS\DTOS.csproj" />
   </ItemGroup>
 
 </Project>

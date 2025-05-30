@@ -14,7 +14,7 @@ public partial class Prestamo
 
     public DateOnly FechaDevolucion { get; set; }
 
-    public string Estado { get; set; } = null!;
+    public string? Estado { get; set; } = null!;
 
     public virtual ICollection<DetallePrestamo> DetallePrestamos { get; set; } = new List<DetallePrestamo>();
     public virtual Estudiante? Estudiante { get; set; } = null!;

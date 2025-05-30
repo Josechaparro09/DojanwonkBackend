@@ -1,4 +1,5 @@
 ﻿using DAL.Modelos;
+using DTOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,12 @@ namespace BLL
             this.dBPrestamo = dBPrestamo;
             this.serviceArticulo = serviceArticulo;
         }
-        public bool VerificarDisponibilidad(ICollection<DetallePrestamo> detallePrestamos)
+        public async Task<bool> VerificarDisponibilidad(ICollection<DetallePrestamo> detallePrestamos)
         {
             foreach (var item in detallePrestamos)
             {
-                if(item.Cantidad > item.IdArticuloNavigation.Disponibles)
+                var articulo = await serviceArticulo.Buscar(item.IdArticulo);
+                if (item.Cantidad > articulo.Disponibles)
                 {
                     return false;
                 }
@@ -29,9 +31,9 @@ namespace BLL
         }
         public async Task<bool> Alquilar(Prestamo agregar)
         {
-            if (!VerificarDisponibilidad(agregar.DetallePrestamos)) 
+            if (!await VerificarDisponibilidad(agregar.DetallePrestamos)) 
                 throw new ArgumentException("No existen disponibles");
-            if(await PrestamoEstudiante(agregar.Estudiante.Id) != null)
+            if(await PrestamoEstudiante(agregar.EstudianteId) != null)
                 throw new ArgumentException("El estudiante ya tiene un prestamo activo");
             foreach (var item in agregar.DetallePrestamos)
             {
@@ -99,6 +101,44 @@ namespace BLL
         {
             var prestamos = await Leer();
             return prestamos.Where(p => p.Estado == "En Prestamo").ToList();
+        }
+        public PrestamoDTO MapearPrestamoADTO(Prestamo prestamo)
+        {
+            return new PrestamoDTO
+            {
+                Id = prestamo.Id,
+                EstudianteId = prestamo.EstudianteId,
+                FechaPrestamo = prestamo.FechaPrestamo,
+                FechaDevolucion = prestamo.FechaDevolucion,
+                Estado = prestamo.Estado,
+                Detalles = prestamo.DetallePrestamos.Select(dp => new DetallePrestamoDTO
+                {
+                    Id = dp.Id,
+                    IdArticulo = dp.IdArticulo,
+                    Cantidad = dp.Cantidad,
+                    Articulo = dp.IdArticuloNavigation != null ? new ArticuloDTO
+                    {
+                        Id = dp.IdArticuloNavigation.Id,
+                        Nombre = dp.IdArticuloNavigation.Nombre,
+                        Cantidad = dp.IdArticuloNavigation.Cantidad,
+                        Disponibles = dp.IdArticuloNavigation.Disponibles
+                    } : null
+                }).ToList(),
+                Estudiante = prestamo.Estudiante != null ? new EstudianteDTO
+                {
+                    Id = prestamo.Estudiante.Id,
+                    Nombres = prestamo.Estudiante.Nombres,
+                    Apellidos = prestamo.Estudiante.Apellidos,
+                    Telefono = prestamo.Estudiante.Telefono,
+                    Correo = prestamo.Estudiante.Correo,
+                    Direccion = prestamo.Estudiante.Direccion,
+                    Eps = prestamo.Estudiante.Eps,
+                    IdRango = prestamo.Estudiante.IdRango,
+                    IdGrupo = prestamo.Estudiante.IdGrupo,
+                    Edad = prestamo.Estudiante.edad,
+                    FechaNacimiento = prestamo.Estudiante.FechaNacimiento
+                } : null
+            };
         }
 
     }

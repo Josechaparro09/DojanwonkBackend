@@ -26,7 +26,6 @@ public partial class Estudiante
     public DateOnly FechaNacimiento { get; set; }
     [JsonIgnore]
     public DateOnly? FechaRegistro { get; set; }
-    [JsonIgnore]
     public string? estado { get; set; }
     [JsonIgnore]
     public virtual ICollection<Examen> Examenes { get; set; } = new List<Examen>();

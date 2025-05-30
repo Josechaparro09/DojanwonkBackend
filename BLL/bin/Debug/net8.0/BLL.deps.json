@@ -9,6 +9,7 @@
       "BLL/1.0.0": {
         "dependencies": {
           "DAL": "1.0.0",
+          "DTOS": "1.0.0",
           "QuestPDF": "2025.5.0"
         },
         "runtime": {
@@ -833,6 +834,14 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "DTOS/1.0.0": {
+        "runtime": {
+          "DTOS.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -1263,6 +1272,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DTOS/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

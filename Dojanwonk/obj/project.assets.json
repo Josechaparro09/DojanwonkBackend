@@ -3066,6 +3066,7 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "DAL": "1.0.0",
+          "DTOS": "1.0.0",
           "QuestPDF": "2025.5.0"
         },
         "compile": {
@@ -3087,6 +3088,16 @@
         },
         "runtime": {
           "bin/placeholder/DAL.dll": {}
+        }
+      },
+      "DTOS/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/DTOS.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DTOS.dll": {}
         }
       }
     }
@@ -8496,11 +8507,17 @@
       "type": "project",
       "path": "../DAL/DAL.csproj",
       "msbuildProject": "../DAL/DAL.csproj"
+    },
+    "DTOS/1.0.0": {
+      "type": "project",
+      "path": "../DTOS/DTOS.csproj",
+      "msbuildProject": "../DTOS/DTOS.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "BLL >= 1.0.0",
+      "DTOS >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Proxies >= 9.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.5",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.5",
@@ -8543,6 +8560,9 @@
           "projectReferences": {
             "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\BLL\\BLL.csproj": {
               "projectPath": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\BLL\\BLL.csproj"
+            },
+            "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DTOS\\DTOS.csproj": {
+              "projectPath": "C:\\Users\\HOME\\OneDrive\\Escritorio\\ParcialP3\\UI\\DTOS\\DTOS.csproj"
             }
           }
         }

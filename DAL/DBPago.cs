@@ -27,12 +27,13 @@ namespace DAL
                  .Include(e => e.IdEstudianteNavigation)
                  .ToListAsync();
         }
-        public async Task<bool> Actualizar(Pago actualizado)
+        public async Task<Pago> Actualizar(Pago actualizado)
         {
-            if (!dbDojankwonContext.Pagos.Any(p => p.Id == actualizado.Id)) return false;
             dbDojankwonContext.Pagos.Update(actualizado);
             await dbDojankwonContext.SaveChangesAsync();
-            return true;
+            return await dbDojankwonContext.Pagos
+                .Include(e => e.IdEstudianteNavigation)
+                .FirstOrDefaultAsync(p => p.Id == actualizado.Id);
         }
         public async Task<Pago> Buscar(string cc)
         {

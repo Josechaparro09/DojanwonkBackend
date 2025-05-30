@@ -18,8 +18,8 @@ namespace Dojanwonk.Controllers
         [HttpPut]
         public async Task<IActionResult> ActualizarPago(Pago pago)
         {
-            await servicePago.ActualizarPago(pago);
-            return Ok("Estado de pago actualizado");
+            var actualizado = await servicePago.ActualizarPago(pago);
+            return Ok(actualizado);
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Pago>>> LeerPagos()

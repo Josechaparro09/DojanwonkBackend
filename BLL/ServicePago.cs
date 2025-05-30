@@ -43,17 +43,18 @@ namespace BLL
                 }
             }
         }
-        public async Task ActualizarPago(Pago actualizado)
+        public async Task<Pago> ActualizarPago(Pago actualizado)
         {
-            if (actualizado != null)
-            {
-                await dBPago.Actualizar(actualizado);
+
+                actualizado.Estado="pagado";
                 if(actualizado.IdEstudianteNavigation.estado=="Inactivo")
                 {
                     actualizado.IdEstudianteNavigation.estado = "Activo";
                     await serviceEstudiante.Actualizar(actualizado.IdEstudianteNavigation);
                 }
-            }
+                return await dBPago.Actualizar(actualizado);
+            
+
         }
         public async Task AgregarPago(Pago pago)
         {

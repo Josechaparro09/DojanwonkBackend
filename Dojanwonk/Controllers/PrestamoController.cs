@@ -1,5 +1,6 @@
 ﻿using BLL;
 using DAL.Modelos;
+using DTOS;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,18 +11,22 @@ namespace Dojanwonk.Controllers
     public class PrestamoController : ControllerBase
     {
         private readonly ServicePrestamo servicePrestamo;
+
         public PrestamoController(ServicePrestamo servicePrestamo)
         {
             this.servicePrestamo = servicePrestamo;
         }
+
         [HttpPost]
-        public async Task<ActionResult<Prestamo>> Agregar(Prestamo prestamo)
+        public async Task<ActionResult> Agregar(Prestamo prestamo)
         {
             try
             {
                 if (await servicePrestamo.Alquilar(prestamo))
                 {
-                    return StatusCode(StatusCodes.Status201Created, prestamo);
+                    // Devuelve el DTO y no la entidad directamente
+                    var dto = servicePrestamo.MapearPrestamoADTO(prestamo);
+                    return StatusCode(StatusCodes.Status201Created, dto);
                 }
                 return BadRequest("No se pudo agregar el prestamo.");
             }
@@ -30,21 +35,32 @@ namespace Dojanwonk.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Prestamo>>> Leer()
+        public async Task<ActionResult<IEnumerable<PrestamoDTO>>> Leer()
         {
-            return Ok(await servicePrestamo.Leer());
+            var prestamos = await servicePrestamo.Leer();
+
+            // Mapeo cada prestamo a DTO
+            var prestamosDTO = prestamos.Select(p => servicePrestamo.MapearPrestamoADTO(p)).ToList();
+
+            return Ok(prestamosDTO);
         }
+
         [HttpGet("{id}")]
-        public async Task<ActionResult<Prestamo>> Buscar(int id)
+        public async Task<ActionResult<PrestamoDTO>> Buscar(int id)
         {
             var buscado = await servicePrestamo.Buscar(id);
+
             if (buscado == null)
             {
                 return NotFound();
             }
-            return Ok(buscado);
+
+            var dto = servicePrestamo.MapearPrestamoADTO(buscado);
+            return Ok(dto);
         }
+
         [HttpDelete]
         public async Task<ActionResult> Eliminar(int id)
         {
@@ -58,18 +74,23 @@ namespace Dojanwonk.Controllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpPut]
-        public async Task<ActionResult> Actualizar(Prestamo prestamo)
+
+        [HttpPut("devolver/{id}")]
+        public async Task<ActionResult> Devolver(int id)
         {
             try
             {
-                await servicePrestamo.Actualizar(prestamo);
-                return Ok("Prestamo eliminado con exito");
+                bool devuelto = await servicePrestamo.Devolver(id);
+                if (!devuelto)
+                    return BadRequest("No se pudo devolver el préstamo o ya fue devuelto.");
+
+                return Ok("Préstamo devuelto con éxito");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(ex.Message);
             }
         }
+
     }
 }
