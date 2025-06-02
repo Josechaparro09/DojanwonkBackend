@@ -34,7 +34,9 @@ namespace DAL
         }
         public async Task<Examen> Buscar(string cc)
         {
-            return await dbDojankwonContext.Examenes.FindAsync(cc);
+            return await dbDojankwonContext.Examenes
+                .Include(e => e.Estudiante)
+                .FirstOrDefaultAsync(e => e.Estudiante.Id == cc);
         }
         public async Task<bool> Eliminar(Examen eliminar)
         {

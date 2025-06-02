@@ -25,26 +25,28 @@ namespace Dojanwonk.Controllers
             return Ok(await(serviceEstudiante.Leer()));
         }
         [HttpPost]
-        public async Task<ActionResult<Estudiante>> Agregar(Estudiante estudiante)
+        public async Task<ActionResult<Estudiante>> Agregar(Estudiante agregar)
         {
             try
             {
-                if (await serviceEstudiante.Agregar(estudiante))
+                Estudiante estudiante = await serviceEstudiante.Agregar(agregar);
+                if(estudiante!= null)
                 {
                     Pago pago = new Pago
                     {
                         IdEstudianteNavigation = estudiante,
-                        FechaPago = estudiante.FechaRegistro.Value.AddMonths(1),
+                        FechaPago = DateOnly.FromDateTime(DateTime.Now),
                         Estado = "pagado"
                     };
                     await this.pago.AgregarPago(pago);
                     return StatusCode(StatusCodes.Status201Created, estudiante);
                 }
+                    
                 return BadRequest("No se pudo agregar el estudiante.");
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                 return BadRequest(ex.Message);
             }
         }
         [HttpPut]

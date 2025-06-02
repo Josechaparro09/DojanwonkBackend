@@ -17,7 +17,7 @@ namespace BLL
             this.dBEstudiante = dBEstudiante;
             this.dBGrupo = dBGrupo;
         }
-        public async Task<bool> Agregar(Estudiante agregar)
+        public async Task<Estudiante> Agregar(Estudiante agregar)
         {
             if (await dBEstudiante.Buscar(agregar.Id) == null)
             {
@@ -38,7 +38,9 @@ namespace BLL
 
                 }
                 await dBEstudiante.Agregar(agregar);
-                return true;
+                Estudiante estudiante = await dBEstudiante.Buscar(agregar.Id);
+                return estudiante;
+
             }
             throw new ArgumentException("Estudiante ya ha sido registrado");
         }

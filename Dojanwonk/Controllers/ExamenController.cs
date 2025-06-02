@@ -23,8 +23,8 @@ namespace Dojanwonk.Controllers
         {
             try
             {
-                await serviceExamen.Registrar(examen);
-                return StatusCode(StatusCodes.Status201Created, examen);
+               Examen registrado = await serviceExamen.Registrar(examen);
+                return StatusCode(StatusCodes.Status201Created, registrado);
             }
             catch (Exception ex)
             {

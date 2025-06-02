@@ -132,7 +132,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "estudiante",
+        "Name": "agregar",
         "Type": "DAL.Modelos.Estudiante",
         "IsRequired": true
       }
@@ -588,5 +588,31 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Dojanwonk.Controllers.UsuarioController",
+    "Method": "Login",
+    "RelativePath": "api/Usuario/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioDTO",
+        "Type": "DTOS.UsuarioDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DAL.Modelos.Usuario",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

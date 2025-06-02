@@ -24,7 +24,7 @@ namespace BLL
             this.serviceEstudiante = serviceEstudiante;
             this.dBRango = dBRango;
         }
-        public async Task<bool> Registrar(Examen examen)
+        public async Task<Examen> Registrar(Examen examen)
         {
             if (await TieneExamenVigente(examen.EstudianteId))
                 throw new ArgumentException("El estudiante ya tiene un examen registrado");
@@ -42,7 +42,7 @@ namespace BLL
                     estudiante.IdRango = rango.Id;
                     await serviceEstudiante.Actualizar(examen.Estudiante);
                 }
-                return true;
+                return await dBExamen.Buscar(examen.EstudianteId);
             }
 
             if (HanPasadoCincoMeses(ultimoExamen.FechaRegistro.Value.ToDateTime(TimeOnly.MinValue )))
@@ -55,7 +55,7 @@ namespace BLL
                     examen.Estudiante.IdRangoNavigation = rango;
                     await serviceEstudiante.Actualizar(examen.Estudiante);
                 }
-                return true;
+                return await dBExamen.Buscar(examen.EstudianteId);
             }
 
             throw new ArgumentException("No han pasado 5 meses desde el último examen");

@@ -1,4 +1,5 @@
 ﻿using DAL.Modelos;
+using DTOS;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace BLL
         }
         public async Task<bool> Agregar(Usuario agregar)
         {
-            if( await dBUsuario.Buscar(agregar.Cc) == null)
+            if (await dBUsuario.Buscar(agregar.Cc) == null)
             {
                 await dBUsuario.Agregar(agregar);
                 return true;
@@ -44,6 +45,12 @@ namespace BLL
         public async Task<bool> Eliminar(string cc)
         {
             return await dBUsuario.Eliminar(cc);
+        }
+        public async Task<Usuario> Login(UsuarioDTO usuarioDTO)
+        {
+            var usuarios = await dBUsuario.Leer();
+            return usuarios.FirstOrDefault(u => u.UserName == usuarioDTO.username && u.Contraseña==usuarioDTO.password);
+
         }
     }
 }
