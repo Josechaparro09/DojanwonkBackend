@@ -37,8 +37,13 @@ namespace DAL
         }
         public async Task<Pago> Buscar(string cc)
         {
-            return await dbDojankwonContext.Pagos.FindAsync(cc);
+            return await dbDojankwonContext.Pagos
+                .Where(p => p.IdEstudiante == cc)
+                .Include(p => p.IdEstudianteNavigation)
+                .OrderByDescending(p => p.FechaPago)
+                .FirstOrDefaultAsync();
         }
+
         public async Task<bool> Eliminar(string cc)
         {
             Pago eliminar = await Buscar(cc);

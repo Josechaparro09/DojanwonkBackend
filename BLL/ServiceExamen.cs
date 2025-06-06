@@ -26,9 +26,11 @@ namespace BLL
         }
         public async Task<Examen> Registrar(Examen examen)
         {
+            Estudiante estudiante = await serviceEstudiante.Buscar(examen.EstudianteId);
             if (await TieneExamenVigente(examen.EstudianteId))
                 throw new ArgumentException("El estudiante ya tiene un examen registrado");
-
+            if(estudiante.estado=="Inactivo")
+                throw new ArgumentException("Al estudiante no se le puede evaluar su estado es inactivo");
             var ultimoExamen = await ObtenerUltimoExamenPorEstudiante(examen.EstudianteId);
 
             if (ultimoExamen == null || !ultimoExamen.FechaRegistro.HasValue)
@@ -37,7 +39,6 @@ namespace BLL
                 await dBExamen.Agregar(examen);
                 if (examen.NotaFinal >= 70)
                 {
-                    Estudiante estudiante = await serviceEstudiante.Buscar(examen.EstudianteId);
                     Rango rango = await dBRango.Buscar(estudiante.IdRango + 1);
                     estudiante.IdRango = rango.Id;
                     await serviceEstudiante.Actualizar(examen.Estudiante);

@@ -1,6 +1,7 @@
 ﻿using BLL;
 using DAL.Modelos;
 using DTOS;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,8 @@ namespace Dojanwonk.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminORecepcion")]
+
         public async Task<ActionResult> Agregar(Prestamo prestamo)
         {
             try
@@ -35,8 +38,16 @@ namespace Dojanwonk.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost("/enMora")]
+        public async Task<ActionResult> EnMora()
+        {
+            await servicePrestamo.EnMora();
+            return Ok("Se han actualizado los préstamos en mora.");
+        }
 
         [HttpGet]
+        [Authorize(Policy = "AdminORecepcion")]
+
         public async Task<ActionResult<IEnumerable<PrestamoDTO>>> Leer()
         {
             var prestamos = await servicePrestamo.Leer();
@@ -48,6 +59,8 @@ namespace Dojanwonk.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Policy = "AdminORecepcion")]
+
         public async Task<ActionResult<PrestamoDTO>> Buscar(int id)
         {
             var buscado = await servicePrestamo.Buscar(id);
@@ -62,6 +75,8 @@ namespace Dojanwonk.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Policy = "AdminORecepcion")]
+
         public async Task<ActionResult> Eliminar(int id)
         {
             try
@@ -76,6 +91,8 @@ namespace Dojanwonk.Controllers
         }
 
         [HttpPut("devolver/{id}")]
+        [Authorize(Policy = "AdminORecepcion")]
+
         public async Task<ActionResult> Devolver(int id)
         {
             try

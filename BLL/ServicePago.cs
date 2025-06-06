@@ -63,91 +63,85 @@ namespace BLL
         public async Task GenerarPagos()
         {
             List<Estudiante> estudiantes = await serviceEstudiante.Leer();
-            foreach (var item in estudiantes)
-            {
-                Pago ultimo = await Buscar(item.Id);
-                if (ultimo == null)
-                {
-                    if (item.FechaRegistro.Value.AddMonths(1).ToDateTime(TimeOnly.MinValue) >= DateTime.Today)
-                    {
-                        //Crear un nuevo pago
-                        Pago nuevoPago = new Pago();
-                        nuevoPago.IdEstudiante = item.Id;
-                        nuevoPago.FechaPago = item.FechaRegistro.Value.AddMonths(1);
-                        nuevoPago.Estado = "Pendiente";
-                        try
-                        {
-                            await NotificacionesCorreo.EnviarCorreoAsync(item.Correo, "Pago Pendiente", $"Estimado {item.Nombres + " " + item.Apellidos}, su pago está pendiente para el día {nuevoPago.FechaPago.ToShortDateString()}.");
 
-                        }
-                        catch (Exception ex)
-                        {
-                            throw;
-                        }
-                        await dBPago.Agregar(nuevoPago);
-                        ultimo.IdEstudianteNavigation.estado = "Inactivo";
-                        await serviceEstudiante.Actualizar(ultimo.IdEstudianteNavigation);
-                    }
-                    if (item.FechaRegistro.Value.AddDays(27).ToDateTime(TimeOnly.MinValue) < DateTime.Today)
-                    {
-                        try
-                        {
-                            await NotificacionesCorreo.EnviarCorreoAsync(item.Correo, "Fecha proximo pago", $"Estimado {item.Nombres + " " + item.Apellidos}, su pago está pendiente para el día {item.FechaRegistro.Value.AddMonths(1).ToShortDateString()}.");
-                        }
-                        catch (Exception ex)
-                        {
-                            throw;
-                        }
-                    }
-                }
-                else
-                {
-                    if (ultimo.FechaPago.AddMonths(1).ToDateTime(TimeOnly.MinValue) >= DateTime.Today)
-                    {
-                        //Crear un nuevo pago
-                        if (ultimo.IdEstudianteNavigation.estado == "Activo")
-                        {
-                            Pago nuevoPago = new Pago();
-                            nuevoPago.IdEstudiante = item.Id;
-                            nuevoPago.FechaPago = ultimo.FechaPago.AddMonths(1);
-                            nuevoPago.Estado = "Pendiente";
-                            try
-                            {
-                                await NotificacionesCorreo.EnviarCorreoAsync(item.Correo, "Pago Pendiente", $"Estimado {ultimo.IdEstudianteNavigation.Nombres + " " + ultimo.IdEstudianteNavigation.Apellidos}, su pago está pendiente para el día {nuevoPago.FechaPago.ToShortDateString()}.");
-                            }
-                            catch (Exception ex)
-                            {
-                                throw;
-                            }
-                            await dBPago.Agregar(nuevoPago);
-                            ultimo.IdEstudianteNavigation.estado = "Inactivo";
-                            await serviceEstudiante.Actualizar(ultimo.IdEstudianteNavigation);
-                        }
-                    }
-                    if (ultimo.FechaPago.AddDays(27).ToDateTime(TimeOnly.MinValue) < DateTime.Today)
-                    {
-                        try
-                        {
-                            await NotificacionesCorreo.EnviarCorreoAsync(ultimo.IdEstudianteNavigation.Correo, "Fecha proximo pago", $"Estimado {item.Nombres + " " + item.Apellidos}, su pago está pendiente para el día {item.FechaRegistro.Value.AddMonths(1).ToShortDateString()}.");
-                        }
-                        catch (Exception ex)
-                        {
-                            throw;
-                        }
-                    }
-                }
-            }
-        }
-        
-        public async Task<Pago> Buscar(string idEstudiante)
-        {
-            List<Pago> pagos = await Leer();
-            if(pagos != null)
+            foreach (var estudiante in estudiantes)
             {
-                return pagos.Where(p => p.IdEstudiante == idEstudiante).ToList().LastOrDefault();
+                var ultimoPago = await dBPago.Buscar(estudiante.Id);
+                DateTime fechaBase = ultimoPago?.FechaPago.ToDateTime(TimeOnly.MinValue)
+                                    ?? estudiante.FechaRegistro!.Value.ToDateTime(TimeOnly.MinValue);
+
+                DateTime fechaProximoPago = fechaBase.AddMonths(1);
+
+                if (DebeGenerarPago(fechaProximoPago, estudiante.estado))
+                {
+                    await CrearPagoPendiente(estudiante, fechaProximoPago);
+                }
+
+                if (DebeEnviarRecordatorio(fechaProximoPago))
+                {
+                    await EnviarRecordatorio(estudiante, fechaProximoPago);
+                }
             }
-            return null;
         }
+        private bool DebeGenerarPago(DateTime fechaProximoPago, string estadoEstudiante)
+        {
+            return fechaProximoPago <= DateTime.Today && estadoEstudiante == "Activo";
+        }
+
+        private bool DebeEnviarRecordatorio(DateTime fechaProximoPago)
+        {
+            var diasRestantes = (fechaProximoPago - DateTime.Today).TotalDays;
+            return diasRestantes <= 3 && diasRestantes >= 0;
+        }
+
+        private async Task CrearPagoPendiente(Estudiante estudiante, DateTime fechaPago)
+        {
+            Pago nuevoPago = new Pago
+            {
+                IdEstudiante = estudiante.Id,
+                FechaPago = DateOnly.FromDateTime(fechaPago),
+                Estado = "Pendiente"
+            };
+
+            await dBPago.Agregar(nuevoPago);
+
+            estudiante.estado = "Inactivo";
+            await serviceEstudiante.Actualizar(estudiante);
+
+            await EnviarCorreoPagoPendiente(estudiante, fechaPago);
+        }
+
+        private async Task EnviarCorreoPagoPendiente(Estudiante estudiante, DateTime fechaPago)
+        {
+            try
+            {
+                await NotificacionesCorreo.EnviarCorreoAsync(
+                    estudiante.Correo,
+                    "Pago Pendiente",
+                    $"Estimado {estudiante.Nombres} {estudiante.Apellidos}, su pago está pendiente desde el día {fechaPago:dd/MM/yyyy}.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al enviar correo de pago pendiente: {ex.Message}");
+            }
+        }
+
+        private async Task EnviarRecordatorio(Estudiante estudiante, DateTime fechaPago)
+        {
+            try
+            {
+                await NotificacionesCorreo.EnviarCorreoAsync(
+                    estudiante.Correo,
+                    "Recordatorio de Pago",
+                    $"Estimado {estudiante.Nombres} {estudiante.Apellidos}, su próximo pago es el día {fechaPago:dd/MM/yyyy}.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al enviar recordatorio: {ex.Message}");
+            }
+        }
+
+
         public async Task<List<Pago>> Leer()
         {
             return await dBPago.Leer();

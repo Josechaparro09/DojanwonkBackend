@@ -12,10 +12,12 @@ namespace BLL
     {
         private readonly DBPrestamo dBPrestamo;
         private readonly ServiceArticulo serviceArticulo;
-        public ServicePrestamo(DBPrestamo dBPrestamo, ServiceArticulo serviceArticulo)
+        private readonly ServiceEstudiante serviceEstudiante;
+        public ServicePrestamo(DBPrestamo dBPrestamo, ServiceArticulo serviceArticulo, ServiceEstudiante serviceEstudiante)
         {
             this.dBPrestamo = dBPrestamo;
             this.serviceArticulo = serviceArticulo;
+            this.serviceEstudiante = serviceEstudiante;
         }
         public async Task<bool> VerificarDisponibilidad(ICollection<DetallePrestamo> detallePrestamos)
         {
@@ -31,6 +33,9 @@ namespace BLL
         }
         public async Task<bool> Alquilar(Prestamo agregar)
         {
+            Estudiante estudiante = await serviceEstudiante.Buscar(agregar.EstudianteId);
+            if (estudiante.estado=="Inactivo") 
+                throw new ArgumentException("Al estudiante no se le puede prestar estado inactivo");
             if (!await VerificarDisponibilidad(agregar.DetallePrestamos)) 
                 throw new ArgumentException("No existen disponibles");
             if(await PrestamoEstudiante(agregar.EstudianteId) != null)

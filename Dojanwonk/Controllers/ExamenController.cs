@@ -1,6 +1,7 @@
 ﻿using BLL;
 using DAL;
 using DAL.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QuestPDF.Fluent;
@@ -19,6 +20,7 @@ namespace Dojanwonk.Controllers
             this.serviceExamen = serviceExamen;
         }
         [HttpPost]
+        [Authorize(Policy = "AdminOInstructor")]
         public async Task<ActionResult<Examen>> Registrar(Examen examen)
         {
             try
@@ -32,11 +34,13 @@ namespace Dojanwonk.Controllers
             }
         }
         [HttpGet]
+        [Authorize(Policy = "AdminOInstructor")]
         public async Task<ActionResult<IEnumerable<Examen>>> Leer()
         {
             return Ok(await serviceExamen.Leer());
         }
         [HttpGet("pdf-examenes")]
+        [Authorize(Policy = "AdminOInstructor")]
         public async Task<IActionResult> DescargarPdf()
         {
             var examenes = await serviceExamen.Leer();
@@ -137,6 +141,7 @@ namespace Dojanwonk.Controllers
 
 
         [HttpPut]
+        [Authorize(Policy = "AdminOInstructor")]
         public async Task<ActionResult> Actualizar(Examen examen)
         {
             try

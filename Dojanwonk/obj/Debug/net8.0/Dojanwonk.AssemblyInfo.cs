@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dojanwonk")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c891bfaffdc1e3013c41831e2bb089289c4066f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+676ac44b26d7a76eefbdb89f531612e2f5698dba")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dojanwonk")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dojanwonk")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

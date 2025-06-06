@@ -1,5 +1,6 @@
 ﻿using BLL;
 using DAL.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
@@ -20,11 +21,14 @@ namespace Dojanwonk.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "TodoStaff")]
         public async Task<ActionResult<IEnumerable<Estudiante>>> Leer()
         {
             return Ok(await(serviceEstudiante.Leer()));
         }
+
         [HttpPost]
+        [Authorize(Policy = "AdminORecepcion")]
         public async Task<ActionResult<Estudiante>> Agregar(Estudiante agregar)
         {
             try
@@ -50,6 +54,7 @@ namespace Dojanwonk.Controllers
             }
         }
         [HttpPut]
+        [Authorize(Policy = "TodoStaff")]
         public async Task<ActionResult<Estudiante>> Actualizar(Estudiante estudiante)
         {
             try
@@ -62,6 +67,7 @@ namespace Dojanwonk.Controllers
             }
         }
         [HttpDelete("{id}")]
+        [Authorize(Policy = "AdminORecepcion")]
         public async Task<ActionResult> Eliminar(string id)
         {
             try
@@ -75,6 +81,7 @@ namespace Dojanwonk.Controllers
             }
         }
         [HttpGet("{id}")]
+        [Authorize(Policy = "AdminORecepcion")]
         public async Task<ActionResult<Estudiante>> Buscar(string id)
         {
             var buscado = await serviceEstudiante.Buscar(id);

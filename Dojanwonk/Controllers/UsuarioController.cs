@@ -1,9 +1,12 @@
 ﻿using BLL;
 using DAL.Modelos;
 using DTOS;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualBasic;
+using System.Text;
 
 namespace Dojanwonk.Controllers
 {
@@ -12,16 +15,20 @@ namespace Dojanwonk.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly ServiceUsuario logica;
-        public UsuarioController(ServiceUsuario logica)
+        private readonly TokenService tokenService;
+        public UsuarioController(ServiceUsuario logica, TokenService tokenService)
         {
             this.logica = logica;
+            this.tokenService = tokenService;
         }
         [HttpGet]
+        [Authorize(Policy = "SoloAdmin")]
         public async Task<ActionResult<IEnumerable<Usuario>>> Leer()
         {
             return Ok(await logica.Leer());
         }
         [HttpPost]
+        [Authorize(Policy = "SoloAdmin")]
         public async Task<ActionResult<Usuario>> Agregar(Usuario usuario)
         {
             try
@@ -39,6 +46,7 @@ namespace Dojanwonk.Controllers
 
         }
         [HttpGet("{cc}")]
+        [Authorize(Policy = "SoloAdmin")]
         public async Task<ActionResult<Usuario>> Buscar(string cc)
         {
             var buscado = await logica.Buscar(cc);
@@ -49,6 +57,7 @@ namespace Dojanwonk.Controllers
             return Ok(buscado);
         }
         [HttpDelete("{cc}")]
+        [Authorize(Policy = "SoloAdmin")]
         public async Task<ActionResult> Eliminar(string cc)
         {
             try
@@ -62,6 +71,7 @@ namespace Dojanwonk.Controllers
             }
         }
         [HttpPut]
+        [Authorize(Policy = "SoloAdmin")]
         public async Task<ActionResult<Usuario>> Actualizar(Usuario usuario)
         {
             try
@@ -74,21 +84,29 @@ namespace Dojanwonk.Controllers
                 return BadRequest(e.Message);
             }
         }
+
         [HttpPost("login")]
-        public async Task<ActionResult<Usuario>> Login(UsuarioDTO usuarioDTO)
+        public async Task<IActionResult> Login([FromBody] UsuarioDTO usuarioDTO)
         {
+            var usuario = await logica.Login(usuarioDTO);
+            if (usuario == null)
+                return Unauthorized("Credenciales incorrectas");
             try
             {
-                var usuario = await logica.Login(usuarioDTO);
-                if (usuario == null)
+                var token = tokenService.GenerateToken(usuario);
+
+
+                return Ok(new
                 {
-                    return Unauthorized("Credenciales incorrectas");
-                }
-                return Ok(usuario);
+                    token,
+                    username = usuario.UserName,
+                    rol = usuario.Rol
+                });
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                return BadRequest(ex.Message);
+                Console.WriteLine(e.Message);
+                return BadRequest("Error al generar el token: " + e.Message);
             }
         }
     }
