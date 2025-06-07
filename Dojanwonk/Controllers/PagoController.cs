@@ -30,6 +30,7 @@ namespace Dojanwonk.Controllers
             return Ok(await servicePago.Leer());
         }
         [HttpPost("generarPagos")]
+        [AllowAnonymous]
         public async Task<IActionResult> GenerarPagos()
         {
             await servicePago.GenerarPagos();

@@ -430,6 +430,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Dojanwonk.Controllers.PrestamoController",
+    "Method": "EnMora",
+    "RelativePath": "api/Prestamo/enMora",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Dojanwonk.Controllers.RangoController",
     "Method": "Leer",
     "RelativePath": "api/Rango",
@@ -603,16 +613,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Dojanwonk.Controllers.PrestamoController",
-    "Method": "EnMora",
-    "RelativePath": "enMora",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   }
 ]

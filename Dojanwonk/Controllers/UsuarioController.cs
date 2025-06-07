@@ -100,7 +100,10 @@ namespace Dojanwonk.Controllers
                 {
                     token,
                     username = usuario.UserName,
-                    rol = usuario.Rol
+                    rol = usuario.Rol,
+                    nombres = usuario.Nombres,
+                    apellidos = usuario.Apellidos,
+                    correo= usuario.Correo,
                 });
             }
             catch (Exception e)

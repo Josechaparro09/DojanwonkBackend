@@ -38,7 +38,8 @@ namespace Dojanwonk.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost("/enMora")]
+        [HttpPost("enMora")]
+        [AllowAnonymous]
         public async Task<ActionResult> EnMora()
         {
             await servicePrestamo.EnMora();

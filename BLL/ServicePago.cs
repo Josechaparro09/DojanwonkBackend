@@ -118,7 +118,8 @@ namespace BLL
                 await NotificacionesCorreo.EnviarCorreoAsync(
                     estudiante.Correo,
                     "Pago Pendiente",
-                    $"Estimado {estudiante.Nombres} {estudiante.Apellidos}, su pago está pendiente desde el día {fechaPago:dd/MM/yyyy}.");
+                    $"Estimado {estudiante.Nombres} {estudiante.Apellidos}, su pago está pendiente" +
+                    $" desde el día {fechaPago:dd/MM/yyyy}.");
             }
             catch (Exception ex)
             {
@@ -133,7 +134,8 @@ namespace BLL
                 await NotificacionesCorreo.EnviarCorreoAsync(
                     estudiante.Correo,
                     "Recordatorio de Pago",
-                    $"Estimado {estudiante.Nombres} {estudiante.Apellidos}, su próximo pago es el día {fechaPago:dd/MM/yyyy}.");
+                    $"Estimado {estudiante.Nombres} {estudiante.Apellidos}, " +
+                    $"su próximo pago es el día {fechaPago:dd/MM/yyyy}.");
             }
             catch (Exception ex)
             {
